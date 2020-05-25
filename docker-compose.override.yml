@@ -1,0 +1,30 @@
+version: "2.4"
+
+services:
+  rabbit:
+    ports:
+      - "15673:15672"
+    restart: always
+    healthcheck:
+      test: [ "CMD", "nc", "-z", "rabbit", "5672" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+
+  buzzer.service:
+    tty: true
+    restart: on-failure
+    depends_on:
+      rabbit:
+        condition: service_healthy
+    ports:
+      - "8001:8000"
+    environment:
+        RABBIT_PASSWORD: "guest"
+        RABBIT_USER: "guest"
+        RABBIT_HOST: "rabbit"
+        RABBIT_PORT: "5672"
+        RABBIT_MANAGEMENT_PORT: "15673"

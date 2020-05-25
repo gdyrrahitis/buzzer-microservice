@@ -1,0 +1,12 @@
+version: "2.4"
+
+services:
+  rabbit:
+    container_name: buzzer-service-rabbitmq
+    image: rabbitmq:3-management-alpine
+
+  buzzer.service:
+    container_name: buzzer-service-app
+    build:
+      context: .
+      dockerfile: ./Dockerfile
