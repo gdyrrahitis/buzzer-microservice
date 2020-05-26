@@ -2,6 +2,8 @@ HOST=127.0.0.1
 PORT=8000
 TAG=gdyrrahitis/pi_buzzer-microservice
 
+.PHONY: clean-pyc clean-build
+
 clean-pyc:
 	find . -name '*.pyc' -exec rm --force {} +
 	find . -name '*.pyo' -exec rm --force {} +

@@ -4,6 +4,7 @@ services:
   rabbit:
     ports:
       - "15673:15672"
+      - "5671:5672"
     restart: always
     healthcheck:
       test: [ "CMD", "nc", "-z", "rabbit", "5672" ]
