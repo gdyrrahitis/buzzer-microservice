@@ -9,4 +9,8 @@ if [ "$APP_ENV" != "production" ]; then
 fi
 
 # run microservice
-nameko run --config config.yml buzzer.service --backdoor 3000
+if [ "$APP_ENV" != "production" ]; then
+    nameko run --config config.yml buzzer.service --backdoor 3000
+else
+    nameko run --config config.yml buzzer.service
+fi
