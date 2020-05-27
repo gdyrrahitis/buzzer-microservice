@@ -8,6 +8,8 @@ if [ "$APP_ENV" != "production" ]; then
     done
 fi
 
+export APP_ADDRESS="0.0.0.0:${PORT}"
+
 # run microservice
 if [ "$APP_ENV" != "production" ]; then
     nameko run --config config.yml buzzer.service --backdoor 3000
