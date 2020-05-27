@@ -4,6 +4,6 @@ setup:
       as: BROKER
 build:
   docker:
-    web: Dockerfile
+    web: Dockerfile-heroku
   config:
     APP_ENV: production
