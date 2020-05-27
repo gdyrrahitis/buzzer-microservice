@@ -6,5 +6,4 @@ build:
   docker:
     web: Dockerfile
   config:
-    RABBIT_HOST: reindeer.rmq.cloudamqp.com
-    RABBIT_PORT: 1883
+    APP_ENV: production
