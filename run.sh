@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo $APP_ENV
 if [ "$APP_ENV" != "production" ]; then
     until nc -z ${RABBIT_HOST} ${RABBIT_PORT}; do
         echo "$(date) - waiting for rabbitmq..."
