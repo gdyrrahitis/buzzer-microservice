@@ -1,0 +1,7 @@
+setup:
+  addons:
+    - plan: cloudamqp:lemur
+      as: BROKER
+build:
+  docker:
+    web: Dockerfile

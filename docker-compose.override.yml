@@ -28,4 +28,5 @@ services:
         RABBIT_USER: "guest"
         RABBIT_HOST: "rabbit"
         RABBIT_PORT: "5672"
+        BROKER_URL: "amqp://guest:guest@rabbit:5672/"
         RABBIT_MANAGEMENT_PORT: "15673"
