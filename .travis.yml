@@ -1,17 +1,15 @@
 language: python
 sudo: required
 services:
-  - docker
-
+- docker
 install:
-  - pip install flake8
-
+- pip install flake8
 script:
-  - pip install --no-cache-dir -e .
-  - make lint
-
+- pip install --no-cache-dir -e .
+- make lint
 deploy:
-  provider: script
-  script: bash deploy.sh
+  provider: heroku
+  api_key:
+    secure: NO6yDBv1OGOcMiN1cWlLoEAxPs04afFcBqPbElFJwpRpkV83Pp6i3JPcwmGaza0hf76+i+NDY928grak3ebIdY8oly6omc72zui1cJwtkkkAmuKERfyqs/nCwla/OhD/Z/C1k8nXHOMJOhY+CAjmfUQQ+rzPC1UFo8l1eFH3JdBMJtb640lk1VjIWgvpnSHgII1aSA6NR/XJ0Ipaa3hrghvkt9RW77osIUaznnpxjVi6sNmGASEOR4TkAJdvRxPG60MKY5MLPPUlZszSHFzqOXutAmEs4ous1VQf93oNFwLa4zn8N4C7Os0Kh9kn0nCd7tdH4N9BGafMXhjMJka8JmKPzhXshZN5TNFa+PRopgy8u//k+SLxshQO6SWhL65ORVxXYK0vDJP/8FAvBIINPSxKdnKiOImUngarVRtVUsLbs8eQu30va2R+aW8tAlyfugVlmwWNPiqiCh1/aIR8Nzaefs6XmpCXU8yXZ9epS+YDl4sMAC4f4ISnm3NT7X2JjvkwVw8NMvp34sbmYPmUN+VT40sIPKI+1nIZF3KLV7YAXCbBB5Vp1xQ6bLAqc14793DFd4L3tY6LGOts/STiPP2nnxGmr7SylQD1EEtNKFAhjm4D7bQXfr9MzL7xLcOIPrt5Vn5BSR+gkEq+JEpAuAvO/MXWgdihdY/cC9mdMHE=
   on:
     branch: master

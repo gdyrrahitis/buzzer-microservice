@@ -5,7 +5,7 @@ from setuptools import find_packages, setup
 setup(
     name='pi-commander-microservice',
     version='0.0.1',
-    description='Send commands to connected Raspberry Pi deveices',
+    description='Send commands to connected Raspberry Pi devices',
     install_requires=[
         'nameko==v3.0.0-rc6',
         'psycopg2-binary==2.8.2',
