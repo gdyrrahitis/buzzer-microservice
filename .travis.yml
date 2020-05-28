@@ -3,6 +3,9 @@ sudo: required
 services:
   - docker
 
+before_install:
+  - pip install flake8
+
 install:
   - make lint
   - make build
