@@ -3,6 +3,7 @@ PORT=8000
 NAME=pi-commander-microservice
 IMAGE=gdyrra/pi_commander-microservice
 TAG ?= dev
+FROM_TAG ?= dev
 
 .PHONY: clean-pyc clean-build
 
