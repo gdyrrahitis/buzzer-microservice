@@ -9,6 +9,6 @@ COPY . .
 RUN chmod +x ./run*.sh
 EXPOSE 8000
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -e .
 
 CMD ["./run.sh"]

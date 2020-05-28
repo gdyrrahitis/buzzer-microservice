@@ -1,6 +1,8 @@
 HOST=127.0.0.1
 PORT=8000
-TAG=gdyrrahitis/pi_buzzer-microservice
+NAME=pi-commander-microservice
+IMAGE=gdyrra/pi_commander-microservice
+TAG ?= dev
 
 .PHONY: clean-pyc clean-build
 
@@ -18,17 +20,22 @@ lint:
 	flake8 --exclude=.tox
 
 build:
-	docker build --tag $(TAG) .
+	docker build --tag $(IMAGE):$(TAG) .
 
 d-run:
-	docker run --name=pi_buzzer_microservice $(TAG)
+	docker run --name=$(NAME) $(TAG)
 
-d-rm:
-	docker rm pi_buzzer_microservice
+remove:
+	docker rm $(NAME)
 
-dco-up:
+start:
 	docker-compose up --build
 
-# TODO: docker tag
-# TODO: docker push
+tag:
+	docker tag $(IMAGE):$(FROM_TAG) $(IMAGE):$(TAG)
 
+push:
+	docker push $(IMAGE):$(TAG)
+
+login:
+	docker login --password=$(DOCKER_PASSWORD) --username=$(DOCKER_USERNAME)

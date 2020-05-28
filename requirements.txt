@@ -1,3 +1,0 @@
-nameko==v3.0.0-rc6
-python-dotenv==0.9.1
-rabbitpy==2.0.1
