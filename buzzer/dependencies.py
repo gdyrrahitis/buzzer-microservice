@@ -24,7 +24,11 @@ class Broker(DependencyProvider):
         self.channel = connection.channel()
         self.exchange = rabbitpy.Exchange(self.channel, 'exch_pi')
         self.exchange.declare()
-        queue = rabbitpy.Queue(self.channel, 'q_pi_buzzer')
+        queue = rabbitpy.Queue(
+            self.channel,
+            'q_pi_buzzer',
+            arguments={'x-message-ttl': 3600000})  # 1h
+
         queue.declare()
         queue.bind(self.exchange, ROUTING_KEY)
 
