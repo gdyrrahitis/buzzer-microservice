@@ -20,7 +20,6 @@ class BrokerWrapper:
 
 class Broker(DependencyProvider):
     def setup(self):
-        print(config.get(AMQP_URI_KEY))
         connection = rabbitpy.Connection(config.get(AMQP_URI_KEY))
         self.channel = connection.channel()
         self.exchange = rabbitpy.Exchange(self.channel, 'exch_pi')

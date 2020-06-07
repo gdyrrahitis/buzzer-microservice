@@ -17,7 +17,6 @@ services:
 
   buzzer.service:
     tty: true
-    restart: on-failure
     depends_on:
       rabbit:
         condition: service_healthy

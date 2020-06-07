@@ -3,7 +3,7 @@
 echo $APP_ENV
 if [ "$APP_ENV" != "production" ]; then
     until nc -z ${RABBIT_HOST} ${RABBIT_PORT}; do
-        echo "$(date) - waiting for rabbitmq..."
+        echo "$(date) - waiting for rabbitmq (${RABBIT_HOST}:${RABBIT_PORT})..."
         sleep 2
     done
 fi
