@@ -19,6 +19,9 @@ clean-build:
 	rm --force --recursive dist/
 	rm --force --recursive *.egg-info
 
+install:
+	pip install --no-cache-dir -e .
+
 lint:
 	flake8 --exclude=.tox
 
