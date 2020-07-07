@@ -19,9 +19,12 @@ class BrokerWrapper:
 
 
 class Broker(DependencyProvider):
+    """ Called on bound Extensions before the container starts.
+    Extensions should do any required initialisation here.
+    """
     def setup(self):
-        connection = rabbitpy.Connection(config.get(AMQP_URI_KEY))
-        self.channel = connection.channel()
+        self.connection = rabbitpy.Connection(config.get(AMQP_URI_KEY))
+        self.channel = self.connection.channel()
         self.exchange = rabbitpy.Exchange(self.channel, 'exch_pi')
         self.exchange.declare()
         queue = rabbitpy.Queue(
@@ -32,5 +35,14 @@ class Broker(DependencyProvider):
         queue.declare()
         queue.bind(self.exchange, ROUTING_KEY)
 
+    """ Called before worker execution. A DependencyProvider should return
+    an object to be injected into the worker instance by the container.
+    """
     def get_dependency(self, worker_context):
         return BrokerWrapper(self.channel, self.exchange)
+
+    """ Called when the service container begins to shut down.
+    """
+    def stop(self):
+        self.channel.close()
+        self.connection.close()

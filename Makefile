@@ -50,17 +50,17 @@ rmq-reset: rmq-stop rmq-remove
 build:
 	docker build --tag $(IMAGE):$(TAG) .
 
-d-run: build
+d-run: d-reset build
 	docker run --name=$(NAME) \
 		--network=$(NETWORK) \
 		-p "8001:8000" \
+		-e PYTHONUNBUFFERED=1 \
 		-e RABBIT_PASSWORD="guest" \
 		-e RABBIT_USER="guest" \
 		-e RABBIT_HOST="rabbit" \
 		-e RABBIT_PORT="5672" \
 		-e BROKER_URL="amqp://guest:guest@rabbit:5672/" \
 		-e RABBIT_MANAGEMENT_PORT="15673" \
-		-e PORT=8000 \
 		$(IMAGE):$(TAG)
 
 stop:
