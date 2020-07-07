@@ -1,4 +1,6 @@
 # Pi Commander microservice
+[![Build Status](https://travis-ci.org/gdyrrahitis/pi-commander-microservice.svg?branch=master)](https://travis-ci.org/gdyrrahitis/pi-commander-microservice)
+
 A microservice that sends commands to connected Raspberry Pi devices.
 
 Commands are sent in form of messages, using RabbitMQ as the message broker. Daemons on Raspberry Pi end pick these messages up and execute specific tasks on the device.
