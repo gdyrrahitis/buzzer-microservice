@@ -5,7 +5,7 @@ from buzzer import dependencies
 
 
 class BuzzerService:
-    name = 'buzzer'
+name = 'buzzer'
 
     rmq = dependencies.Broker()
 
